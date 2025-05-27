@@ -32,5 +32,36 @@ public class Solution {
 
         return new string(chars);
 
+        TimeComplexity of : O(n)
+        space complexity O(n)
+
+    //Now using 2 pointers to fix this in o(n) and O(1)
+
+            var chars = s.ToCharArray();
+        int startIndex = 0;
+        int lastIndex = chars.Length - 1;
+
+        Console.WriteLine(lastIndex);
+
+        while(startIndex < lastIndex){
+            while(startIndex < lastIndex && !vowels.Contains(chars[startIndex])){
+                 startIndex++;
+            }
+
+            while(startIndex < lastIndex && !vowels.Contains(chars[lastIndex])){
+                lastIndex--;
+            }
+
+            if( startIndex < lastIndex){
+                var temp = chars[startIndex];
+                chars[startIndex] = chars[lastIndex];
+                chars[lastIndex] = temp;
+
+                startIndex++;
+                lastIndex--; 
+            }
+        }
+        return new String(chars);
+
     }
 }
